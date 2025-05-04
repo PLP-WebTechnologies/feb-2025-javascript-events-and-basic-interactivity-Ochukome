@@ -1,46 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Me - Favour Ezet</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OCHUKOME</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Hi, I'm Favour 👋</h1>
-    <p>Creative, Curious, and Code-Obsessed</p>
+    <h1>OCHUKOME</h1>
   </header>
 
-  <section class="about">
-    <h2>About Me</h2>
-    <p onmouseover="changeText(this)">I love building fun and functional web projects.</p>
-    <button onclick="toggleModal()">See Fun Fact</button>
+  <section id="bio">
+    <h2>Welcome to My Site!</h2>
+    <p>Here’s a little bit about me...</p>
   </section>
 
-  <section class="skills">
-    <h2>Rate My Skills</h2>
-    <label for="html-range">HTML: <span id="html-val">50</span>%</label>
-    <input type="range" id="html-range" value="50" onchange="updateRange(this, 'html-val')" />
-  </section>
-
-  <section class="contact">
+  <!-- Form Section with Validation -->
+  <section id="formSection">
     <h2>Contact Me</h2>
-    <form onsubmit="return validateForm()">
-      <input type="text" id="name" placeholder="Name" required />
-      <input type="email" id="email" placeholder="Email" required />
-      <textarea id="message" placeholder="Your message..." required></textarea>
-      <button type="submit">Send Message</button>
-      <p id="form-msg"></p>
+    <form>
+      <input type="text" id="nameInput" placeholder="Your Name" required><br>
+      <input type="email" id="email" placeholder="Your Email" required><br>
+      <input type="password" id="password" placeholder="Your Password" required><br>
+      <span id="passwordFeedback" class="feedback"></span><br>
+      <button type="button" id="submitButton">Submit</button>
     </form>
   </section>
 
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <span class="close" onclick="toggleModal()">&times;</span>
-      <p>I can sing, code, and binge-watch medical dramas all in one night 😎</p>
+  <!-- Image Gallery Section -->
+  <section id="gallery">
+    <h2>My Gallery</h2>
+    <div class="gallery">
+      <img src="image1.jpg" alt="Image 1">
+      <img src="image2.jpg" alt="Image 2" style="display:none;">
+      <img src="image3.jpg" alt="Image 3" style="display:none;">
     </div>
-  </div>
+    <button id="prevImage">Previous</button>
+    <button id="nextImage">Next</button>
+  </section>
+
+  <!-- Tabs Section -->
+  <section id="tabs">
+    <h2>My Interests</h2>
+    <div class="tabs">
+      <button class="tab" data-target="tab1Content">Coding</button>
+      <button class="tab" data-target="tab2Content">Music</button>
+      <button class="tab" data-target="tab3Content">Travel</button>
+    </div>
+    <div id="tab1Content" class="tab-content">I love coding! It's my passion.</div>
+    <div id="tab2Content" class="tab-content" style="display:none;">Music is a big part of my life.</div>
+    <div id="tab3Content" class="tab-content" style="display:none;">I enjoy traveling and exploring new places.</div>
+  </section>
 
   <script src="script.js"></script>
 </body>

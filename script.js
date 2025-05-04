@@ -1,83 +1,69 @@
-// === script.js ===
-
-// Wait for DOM to load
-window.addEventListener("DOMContentLoaded", () => {
-    // Form Validation
-    const form = document.querySelector("form");
-    const nameInput = document.querySelector("input[type='text']");
-    const emailInput = document.querySelector("input[type='email']");
-    const feedbacks = document.querySelectorAll(".feedback");
+// Keypress Detection
+document.getElementById("nameInput").addEventListener("keypress", function (e) {
+    console.log(`Key pressed: ${e.key}`);
+  });
   
-    function showFeedback(input, message) {
-      const feedback = input.nextElementSibling;
-      feedback.textContent = message;
-      feedback.style.display = "block";
-    }
+  // Button Click for Text Change
+  const button = document.getElementById("submitButton");
+  button.addEventListener("click", function () {
+    button.innerText = "Clicked! Thank you.";
+  });
   
-    function clearFeedback() {
-      feedbacks.forEach(fb => (fb.style.display = "none"));
-    }
+  // Double Click for Secret Action
+  button.addEventListener("dblclick", function () {
+    alert("You discovered the secret action!");
+  });
   
-    form.addEventListener("submit", function (e) {
-      clearFeedback();
-      let valid = true;
+  // Hover Effect on Button (CSS already handles this)
+  button.addEventListener("mouseover", function () {
+    console.log("Hovered over the button!");
+  });
   
-      if (nameInput.value.trim() === "") {
-        showFeedback(nameInput, "Name is required.");
-        valid = false;
-      }
-  
-      if (emailInput.value.trim() === "" || !emailInput.value.includes("@")) {
-        showFeedback(emailInput, "Enter a valid email address.");
-        valid = false;
-      }
-  
-      if (!valid) e.preventDefault();
-    });
-  
-    // Slider Interaction
-    const slider = document.querySelector(".slider");
-    if (slider) {
-      slider.addEventListener("input", () => {
-        document.body.style.opacity = slider.value / 100;
+  // Tabs functionality
+  const tabs = document.querySelectorAll(".tab");
+  tabs.forEach(tab => {
+    tab.addEventListener("click", function () {
+      const contentId = this.getAttribute("data-target");
+      document.querySelectorAll(".tab-content").forEach(content => {
+        content.style.display = "none";
       });
-    }
-  
-    // Button Modal Interaction
-    const modal = document.querySelector(".modal");
-    const closeBtn = document.querySelector(".close");
-    const openModalBtn = document.querySelector("button");
-  
-    if (modal && closeBtn && openModalBtn) {
-      openModalBtn.addEventListener("click", () => {
-        modal.style.display = "flex";
-      });
-  
-      closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-      });
-  
-      window.addEventListener("click", e => {
-        if (e.target === modal) modal.style.display = "none";
-      });
-    }
-  
-    // OnMouseOver example
-    const sections = document.querySelectorAll("section");
-    sections.forEach(section => {
-      section.addEventListener("mouseover", () => {
-        section.style.backgroundColor = "#f0f8ff";
-      });
-      section.addEventListener("mouseout", () => {
-        section.style.backgroundColor = "#fff";
-      });
-    });
-  
-    // OnChange example (if any dropdowns or inputs need tracking)
-    document.querySelectorAll("input, select").forEach(input => {
-      input.addEventListener("change", () => {
-        console.log(`${input.name || input.type} changed to:`, input.value);
-      });
+      document.getElementById(contentId).style.display = "block";
     });
   });
+  
+  // Password Validation
+  const passwordField = document.getElementById("password");
+  const passwordFeedback = document.getElementById("passwordFeedback");
+  
+  passwordField.addEventListener("input", function () {
+    const password = passwordField.value;
+    if (password.length >= 8) {
+      passwordFeedback.style.display = "none";
+    } else {
+      passwordFeedback.style.display = "block";
+      passwordFeedback.innerText = "Password must be at least 8 characters long.";
+    }
+  });
+  
+  // Image Gallery
+  const images = document.querySelectorAll(".gallery img");
+  let currentImageIndex = 0;
+  
+  function showImage(index) {
+    images.forEach((image, i) => {
+      image.style.display = i === index ? "block" : "none";
+    });
+  }
+  
+  document.getElementById("nextImage").addEventListener("click", function () {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    showImage(currentImageIndex);
+  });
+  
+  document.getElementById("prevImage").addEventListener("click", function () {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    showImage(currentImageIndex);
+  });
+  
+  showImage(currentImageIndex); // Show the first image by default
   
