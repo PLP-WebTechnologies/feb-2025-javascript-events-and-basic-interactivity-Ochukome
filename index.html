@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me - Favour Ezet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Hi, I'm Favour 👋</h1>
+    <p>Creative, Curious, and Code-Obsessed</p>
+  </header>
+
+  <section class="about">
+    <h2>About Me</h2>
+    <p onmouseover="changeText(this)">I love building fun and functional web projects.</p>
+    <button onclick="toggleModal()">See Fun Fact</button>
+  </section>
+
+  <section class="skills">
+    <h2>Rate My Skills</h2>
+    <label for="html-range">HTML: <span id="html-val">50</span>%</label>
+    <input type="range" id="html-range" value="50" onchange="updateRange(this, 'html-val')" />
+  </section>
+
+  <section class="contact">
+    <h2>Contact Me</h2>
+    <form onsubmit="return validateForm()">
+      <input type="text" id="name" placeholder="Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <textarea id="message" placeholder="Your message..." required></textarea>
+      <button type="submit">Send Message</button>
+      <p id="form-msg"></p>
+    </form>
+  </section>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" onclick="toggleModal()">&times;</span>
+      <p>I can sing, code, and binge-watch medical dramas all in one night 😎</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
